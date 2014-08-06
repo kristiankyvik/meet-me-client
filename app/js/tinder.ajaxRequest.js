@@ -1,9 +1,16 @@
-var TinderAjax = (function() {
+var TinderAjax = function() {
     return {
         getJSON : function(url) {
-        	$.get(url, function(data) {
-        		return JSON.parse(data);
-        	});
-        }
-    };
-}());
+           var response = '';
+            $.ajax({ type: "GET",   
+            url: url,   
+            async: false,
+            success : function(text)
+             {
+               response = text;
+              }
+            });
+          return response;
+          }
+       }
+};

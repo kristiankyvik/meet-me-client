@@ -1,4 +1,4 @@
-var TinderNotification = (function () {
+var tinderNotifications = (function () {
   var instance;
 
   function init(){
@@ -25,19 +25,25 @@ var TinderNotification = (function () {
     }
 
     return {
-      sendNotification: notificate
+      notificate: notificate
     }
   }
 
-  return function(){
-      if (!instance){
-        instance = init();
+  return {
+    getInstance: function(){
+        if (!instance){
+          instance = init();
+        }
+        return instance;
       }
-      return instance;
     }
-  
-
 })();
 
+// Example: 
+// var tn = tinderNotifications.getInstance();
+// var options = {
+//   icon: "http://lorempixel.com/100/100",
+//   body: "You have saved 'Arena' location"
+// };
 
-// TinderNotification().sendNotification("Hello", {icon: "http://lorempixel.com/90/90", body: "Hej!"});
+// tn.notificate("Congratulations!", options);
